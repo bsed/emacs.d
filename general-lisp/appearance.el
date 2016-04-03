@@ -21,7 +21,7 @@
 (global-hl-line-mode 1)
 (set-face-background 'region "#202020")
 ;; No scratch Message
-(setq initial-scratch-message ";; So this is you again, Kelvin\n\n")
+(setq initial-scratch-message ";; So this is you again, kelvin\n\n")
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
