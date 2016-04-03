@@ -1,15 +1,15 @@
 (require 'helm-config)
 (require 'helm-projectile)
 
-(setq 
+(setq
  helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
  helm-quick-update t ; do not display invisible candidates
  helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
  helm-split-window-in-side-p t ;; open helm buffer inside current window, not occupy whole other window
  helm-candidate-number-limit 500 ; limit the number of displayed canidates
  helm-ff-file-name-history-use-recentf t
- helm-buffers-fuzzy-matching t 
- helm-case-fold-search 'smart 
+ helm-buffers-fuzzy-matching t
+ helm-case-fold-search 'smart
  helm-ff-transformer-show-only-basename nil)
 
 ;; sauce: http://stackoverflow.com/questions/19283368/how-can-i-open-quickly-a-file-in-emacs
@@ -18,7 +18,7 @@
   ;; just in case someone decides to pass an argument, helm-omni won't fail.
   (interactive)
   (helm-other-buffer
-   (append ;; projectile errors out if you're not in a project 
+   (append ;; projectile errors out if you're not in a project
     '(helm-c-source-buffers-list) ;; list of all open buffers
     (if (projectile-project-p) ;; so look before you leap
         '(helm-source-projectile-buffers-list
@@ -61,12 +61,12 @@
 ;; (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 
-(setq helm-github-stars-username "cestdiego")
+(setq helm-github-stars-username "d0f")
 
 (require 'helm-flycheck) ;; Not necessary if using ELPA package
 (eval-after-load 'flycheck
   '(define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
 
-(helm-projectile-on)
+(setq helm-projectile-on nil)
 (provide 'setup-helm)

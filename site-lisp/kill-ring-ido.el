@@ -67,7 +67,7 @@
 
 (defadvice ido-set-matches-1(around this-is-needed-to-search-through-long-strings)
   "I need to search through long string(with is in cadr, not in car), but outside ido-set-matches, ido-name should be default."
-  (flet ((ido-name (item) (if (consp item) (cadr item) item)))
+  (cl-flet ((ido-name (item) (if (consp item) (cadr item) item)))
     ad-do-it))
 
 (defun kill-ring-ido(&optional arg prompt ring insert)

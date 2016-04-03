@@ -1,7 +1,7 @@
 (require 'cider)
 
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(setq nrepl-hide-special-buffers) t
+(setq nrepl-hide-special-buffers t) 
 (setq cider-repl-pop-to-buffer-on-connect nil)
 (setq cider-popup-stacktraces nil)
 (setq cider-repl-popup-stacktraces t)

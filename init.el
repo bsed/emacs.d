@@ -1,6 +1,27 @@
 ;;; Code:
 
 ;; Turn off mouse interface early in startup to avoid momentary display
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+
+(require 'package)
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                          ("gnu" . "http://elpa.gnu.org/packages/")
+                          ("marmalade" . "http://marmalade-repo.org/packages/")
+                          ("melpa" . "https://melpa.org/")
+                         ("org" . "http://orgmode.org/elpa/")))
+
+; Apparently needed for the package auto-complete (why?)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
+(setq url-http-attempt-keepalives nil)
+(setq sml/no-confirm-load-theme t)
+
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -83,7 +104,7 @@
      git-gutter
      gitconfig-mode
      gitignore-mode
-     git-commit-mode
+     ;;git-commit-mode
      git-messenger
      git-timemachine
      gist
@@ -120,25 +141,25 @@
 
      ;; C/C++ Development
      ggtags
-     
+
      ;; Elisp
-     dash 
+     dash
      elisp-slime-nav
      esup
-     
+
      ;; Evil
      evil
      evil-visualstar
-     evil-surround				
+     evil-surround
      evil-leader
      evil-numbers
      evil-escape
      evil-lisp-state
-     
+
      ;; Haskell
      haskell-mode
      hi2
-     
+
      ;; Helm
      helm
      helm-projectile
@@ -148,6 +169,8 @@
      helm-flycheck
      helm-descbinds
      helm-github-stars
+
+     thumb-frm
 
      ;; MongoDB
      inf-mongo
@@ -175,7 +198,7 @@
      ;; Elixir
      elixir-mode
      alchemist
-     
+
      ;; YAML
      yaml-mode
      ansible
@@ -184,10 +207,10 @@
      ;; Zeal (Dash Replacement for Linux)
      ;; zeal-at-point
      helm-dash
-     
+
      ;; MATLAB
      ;; matlab-mode
-     
+
      ;; ;; Server
      ;; elnode
      ;; peek-mode
@@ -199,7 +222,7 @@
      ebib
      gnuplot-mode
      ac-ispell
-     
+
      ;; HTML
      emmet-mode
      web-mode
@@ -215,7 +238,7 @@
      jedi
      ;; anaconda-mode
      epc
-     
+
      ;; Lua
      lua-mode
 
@@ -231,7 +254,7 @@
      skewer-mode
 
      ;;Goodies
-     smooth-scrolling 
+     smooth-scrolling
      ace-jump-mode
      paradox
      ox-reveal
@@ -277,6 +300,7 @@
 ;; Transparency setup
 (require 'seethru)
 (seethru 100)
+
 
 ;; Here you put your own github token for when you use paradox-list-packages
 (setq paradox-github-token "83a6194df4e80edc925fbaf6ee718eed71cbd2ef")
