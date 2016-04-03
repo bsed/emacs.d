@@ -14,12 +14,12 @@ curl -L -O - emacs.hackspace.la | bash
 
 If you are not good with ssh:
 #+begin_src sh
-git clone --recursive http://github.com/CestDiego/.emacs.d
+git clone --recursive http://github.com/d0f/.emacs.d
 #+end_src
 
 If you love <3 ssh:
 #+begin_src sh
-git clone --recursive git@github.com:CestDiego/.emacs.d.git
+git clone --recursive git@github.com:d0f/.emacs.d.git
 #+end_src
 
 Then execute the installer
