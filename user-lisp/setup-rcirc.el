@@ -3,9 +3,9 @@
 (require 'rcirc)
 (require 'epa-file)
 ;; Change user info
-(setq rcirc-default-nick "cestdiego")
-(setq rcirc-default-user-name "cestdiego")
-(setq rcirc-default-full-name "Diego Berrocal")
+(setq rcirc-default-nick "peaksec")
+(setq rcirc-default-user-name "peaksec")
+(setq rcirc-default-full-name "Peaks Secgl")
 
 
 ;; (require 'secrets)

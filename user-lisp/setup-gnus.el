@@ -117,19 +117,19 @@
 ;; (setq gnus-thread-ignore-subject t)
 
 ;; ; Personal Information
-;; (setq user-full-name "Diego Berrocal"
-;;       user-mail-address "cestdiego@gmail.com"
+;; (setq user-full-name "kelvin"
+;;       user-mail-address "me@ggnux.cn"
 ;;       ;message-generate-headers-first t
 ;;       )
 
 ;; ;; Change email address for work folder.  This is one of the most
 ;; ;; interesting features of Gnus.  I plan on adding custom .sigs soon
 ;; ;; for different mailing lists.
-;; ;; Usage, FROM: Diego Berrocal <work>
+;; ;; Usage, FROM: Peaks Secgl <work>
 ;; (setq gnus-posting-styles
 ;;       '((".*"
-;;      (name "Diego Berrocal"
-;;           (address "cestdiego@gmail.com"
+;;      (name "kelvin"
+;;           (address "me@ggnux.cn"
 ;;                    (organization "")
 ;;                    (signature-file "~/.signature")
 ;;                    ("D-Troll" "Emacs is better than Vi(m)")

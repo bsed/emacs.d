@@ -9,7 +9,7 @@ else
     fi
 
     echo "\n Cloning ... \n"
-    git clone --recursive https://www.github.com/CestDiego/.emacs.d.git ~/.emacs.d
+    git clone --recursive https://github.com/d0f/emacs.d.git ~/.emacs.d
 fi
 
 if [ -f "/usr/bin/emacs" ] || [ -f "/usr/local/bin/emacs" ] ; then

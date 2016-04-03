@@ -1,11 +1,24 @@
-;;; Code:
-
-;; Turn off mouse interface early in startup to avoid momentary display
+;; -*- coding: utf-8 -*-
+(defvar best-gc-cons-threshold gc-cons-threshold "Best default gc threshold value. Should't be too big.")
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+
+(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
+;; don't GC during startup to save time
+(setq gc-cons-threshold most-positive-fixnum)
+(let ((minver "23.3"))
+  (when (version<= emacs-version "23.1")
+    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+(when (version<= emacs-version "24")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(tooltip-mode -1)
 
 (require 'package)
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
