@@ -45,6 +45,49 @@
 ;; yum install bitstream-vera-sans-mono-fonts.noarch
 (set-default-font "Bitstream Vera Sans Mono-14")
 (setq search-default-regexp-mode nil) ;; emacs25.1
+
+; use `alias emacs='emacs -fn "DejaVu Sans Mono:size=14"` to avoid
+;; frame size switching on startup.
+
+;; Way 1
+;; ;(let ((zh-font "-unknown-AR PL UMing CN-*-*-*-*-16-*-*-*-*-*-*-*")
+;; (let ((zh-font "WenQuanYi Bitmap Song:pixelsize=13")
+;;       (fontset "fontset-my"))
+;;   (create-fontset-from-fontset-spec
+;;     (concat
+;;       "-unknown-DejaVu Sans Mono-*-*-*-*-12-*-*-*-*-*-" fontset
+;;       ",kana:"          zh-font
+;;       ",han:"           zh-font
+;;       ",symbol:"        zh-font
+;;       ",cjk-misc:"      zh-font
+;;       ",bopomofo:"      zh-font))
+;;   (set-default-font fontset)
+;;   (add-to-list 'default-frame-alist `(font . ,fontset)))
+  ;; or set font for new frame like this:
+  ;(add-to-list 'after-make-frame-functions
+  ;             (lambda (new-frame)
+  ;               (select-frame new-frame)
+  ;               (if window-system
+  ;                 (set-frame-font "fontset-my"))))
+
+
+;; Way 2
+(let (default-font zh-font)
+  (cond
+    ((eq window-system 'x)
+    (setq default-font "Ubuntu Mono 14"
+          zh-font (font-spec :family "Sans" :size 20)))
+   ((eq window-system 'w32)
+    (setq default-font "Consolas 11"
+          zh-font (font-spec :family "Microsoft Yahei" :size 14))))
+  (when default-font
+    (set-default-font default-font)
+    (setq fontset (frame-parameter nil 'font))
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font fontset charset zh-font))
+    (add-to-list 'default-frame-alist `(font . ,fontset))))
+
+
 ;; 支持emacs和外部程序的粘贴
 (setq x-select-enable-clipboard t)
 
@@ -346,10 +389,9 @@
 ;;保存文件的时候对该源文件做一下gofmt
 (add-hook 'before-save-hook #'gofmt-before-save)
 
-(set-fontset-font "fontset-default" nil
-                  (font-spec :size 20 :name "Symbola"))
-
+(setq face-font-rescale-alist '(("Microsoft Yahei" . 1.2) ("WenQuanYi Zen Hei" . 1.2)))
 ;; Load Mac-only config
+
 (when is-mac (require 'mac))
 
 ;; _____________________________________________________________________________
