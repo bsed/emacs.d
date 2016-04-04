@@ -19,7 +19,7 @@ a sound to be played"
 (add-hook 'after-init-hook (lambda ()
                              (notify-send-popup
                               "Happy Hacking!!!"
-                              "Welcome to HackSpace, Diego!"
+                              "Welcome to GNUX, kelvin!"
                               "~/.emacs.d/site-misc/hack.png"
                               "~/.emacs.d/site-misc/startup.ogg"
                               )

@@ -160,5 +160,32 @@
 (define-key sp-keymap (kbd "H-s j") 'sp-join-sexp)
 (define-key sp-keymap (kbd "H-s s") 'sp-split-sexp)
 
+;; 一些窗口操作的快捷键
+(global-set-key (kbd "M-0") 'delete-window)
+(global-set-key (kbd "M-2") 'split-window-vertically)
+(global-set-key (kbd "M-3") 'split-window-horizontally)
+(global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "C-^") 'enlarge-window)
+;; (global-set-key (kbd "C-*") 'shrink-window)
+(global-set-key (kbd "C-q") 'kill-ring-save)
+(global-set-key (kbd "C-{") 'backward-page)
+(global-set-key (kbd "C-}") 'forward-page)
+;; Buffer 之间跳转的快捷键
+(global-set-key (kbd "C-x C-j") 'switch-to-prev-buffer)
+(global-set-key (kbd "C-x C-k") 'switch-to-next-buffer)
+;; 括号间跳转
+(global-set-key (kbd "C-M-n") 'forward-list)
+(global-set-key (kbd "C-M-p") 'backward-list)
+;; 跳转到某行
+(global-set-key (kbd "M-g") 'goto-line)
+;; 字符替换
+(global-set-key (kbd "M-r") 'replace-string)
+(global-set-key
+  (kbd "M-s s")
+  (lambda ()
+    (interactive)
+    (let ((search-whitespace-regexp ".*?"))
+      (call-interactively 'isearch-forward))))
+
 
 (provide 'key-bindings)

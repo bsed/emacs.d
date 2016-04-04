@@ -1,24 +1,61 @@
 ;; -*- coding: utf-8 -*-
 (defvar best-gc-cons-threshold gc-cons-threshold "Best default gc threshold value. Should't be too big.")
+(setq gc-cons-threshold (* 50 1024 1024))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
-(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
+;;(defvar best-gc-cons-threshold 4000000 "Best default gc threshold value. Should't be too big.")
 ;; don't GC during startup to save time
-(setq gc-cons-threshold most-positive-fixnum)
+;;(setq gc-cons-threshold most-positive-fixnum)
 (let ((minver "23.3"))
   (when (version<= emacs-version "23.1")
     (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
 (when (version<= emacs-version "24")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+;; CobbLiu's emacs config file
+(setq user-full-name "kelvin")
+(setq user-mail-address "peaksec@gmail.com")
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
+
+
+;; 显示行号和列号
+(global-linum-mode t)
+(setq lium-mode t)
+(setq column-number-mode t)
+(setq line-number-mode t)
+(set-face-background 'fringe "#f4a460")
+(setq linum-format "%d ")
+
+;; 一些缩进设置
+(setq c-basic-offset 2)
+(setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
+
+
+;; 设置字体是Bitstream Vera Sans Moni
+;; font-size是11，因为笔记本12寸，所以字体不敢弄太大
+;; yum install bitstream-vera-sans-mono-fonts.noarch
+(set-default-font "Bitstream Vera Sans Mono-14")
+(setq search-default-regexp-mode nil) ;; emacs25.1
+;; 支持emacs和外部程序的粘贴
+(setq x-select-enable-clipboard t)
+
+;; 在mode-line显示时间，格式如下
+(display-time-mode 1)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+
+;; 以 y/n代表 yes/no
+(fset 'yes-or-no-p 'y-or-n-p)
+
 
 (require 'package)
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
@@ -281,6 +318,11 @@
 
      ;; jabber
      ;; twittering-mode
+     ;; golang
+     ;; auto-completion是一个代码自动补全工具
+     auto-complete
+     go-mode
+     go-autocomplete
 
      ;; Themming
      smart-mode-line
@@ -297,6 +339,15 @@
 
 ;; Setup Key bindings
 (require 'key-bindings)
+
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+;;保存文件的时候对该源文件做一下gofmt
+(add-hook 'before-save-hook #'gofmt-before-save)
+
+(set-fontset-font "fontset-default" nil
+                  (font-spec :size 20 :name "Symbola"))
 
 ;; Load Mac-only config
 (when is-mac (require 'mac))
@@ -354,3 +405,4 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
