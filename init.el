@@ -87,7 +87,7 @@
       (set-fontset-font fontset charset zh-font))
     (add-to-list 'default-frame-alist `(font . ,fontset))))
 
-
+ (set-fontset-font t 'han (font-spec :name "NotoSans"))
 ;; 支持emacs和外部程序的粘贴
 (setq x-select-enable-clipboard t)
 
@@ -265,6 +265,8 @@
 
      thumb-frm
 
+     markdown-mode
+     
      ;; MongoDB
      inf-mongo
      ob-mongo
